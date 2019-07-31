@@ -1,7 +1,7 @@
 .own-animal {
     cursor: pointer;
-    border: 1px black solid;
-    background-color: lavenderblush;
+    border: 2px midnightblue solid;
+    /*background-color: lavenderblush;*/
 }
 
 .market-animal {
@@ -25,6 +25,7 @@
     /*display:none;*/
     background-color: white;
     border: 1px salmon solid;
+    opacity: 0.5;
 }
 
 img {

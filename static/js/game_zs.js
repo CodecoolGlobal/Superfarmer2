@@ -46,8 +46,5 @@ function dragLeave(){
 
 function drop(){
     this.className = 'holder';
-    for (const ownAnimal of ownAnimals){
-        this.append(ownAnimal);
-    }
     console.log('drop');
 }
