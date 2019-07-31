@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
     <script src="/static/js/game.js" defer></script>
+<!--    <script src="/static/js/game_zs.js" defer></script>-->
 </head>
 
 <body>
@@ -93,7 +94,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="row">
                     <div class="col-1">6x</div>
-                    <div class="col-5"><div class="market-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
+                    <div class="col-5"><div class="market-animal"><img class="market-image" src="/static/images/rabbit.png" width="50px"></div></div>
                     <div class="col-1">=</div>
                     <div class="col-5 "><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
                 </div>
@@ -139,7 +140,7 @@
             </div>
         </div>
         <div align="center">
-             <button id="done_button" type="button" class="btn btn-info user1">Done</button>
+            <button id="done_button" type="button" class="btn btn-info user1">Done</button>
         </div>
         <br>
         <hr class="my-4">
@@ -155,7 +156,7 @@
                 <br>
                 <div class="row">
                     <div class="col-2" id="user1-rabbit">num x</div>
-                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img class="user-image" src="/static/images/rabbit.png" width="50px"></div></div>
                     <div class="col-2" id="user1-sheep">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
                 </div>
