@@ -109,12 +109,12 @@ for (const marketAnimal of marketAnimals){
 
 function dragStart(){
     this.className += ' held';
-    setTimeout(() => (this.className = 'invisible'), 0);
+    setTimeout(() => (this.className = 'own-animal-inactive'), 0);
     console.log('start');
 }
 
 function dragEnd(){
-    this.className = 'own-animal';
+    this.className = 'own-animal-inactive';
     console.log('end');
 }
 
@@ -130,13 +130,12 @@ function dragEnter(e){
 }
 
 function dragLeave(){
-    this.className = 'holder';
+    this.className = 'market-animal';
     console.log('leave');
 }
 
 function drop(){
-    this.className = 'holder';
-
+    this.className += ' active';
+    console.log('drop');
 }
-
 
