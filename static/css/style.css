@@ -1,3 +1,25 @@
+.card-img-top{
+    width: 30%;
+    height: 30%;
+}
+
+.num-text{
+    color: coral;
+    font-size: 30px;
+    font: bold 30px Ubuntu;
+}
+
+.card-text{
+    color: grey;
+    font-size: 15px;
+}
+
+
+.col-lg-1{
+    font-size: 35px;
+}
+
+
 .own-animal {
     cursor: pointer;
     border: 1px black solid;
@@ -35,3 +57,9 @@ img {
     width: 80px;
     padding-bottom: 20px;
 }
+
+.col-1{
+    color: coral;
+    font: bold 30px Ubuntu;
+}
+
