@@ -56,18 +56,6 @@ function rollDice()  {
     return [diceImgName1, diceImgName2];
 };
 
-function whichUser() {
-    user = document.getElementById("done_button");
-    if (user.classList.contains("user1")) {return 'user1'}
-    else if (user.classList.contains("user2")) {return 'user2'}
-};
-
-function switchUser() {
-    user = document.getElementById("done_button");
-    turn = whichUser();
-    if (turn === 'user1') {user.classList.replace('user1', 'user2');
-    else if (turn === 'user2') {user.classList.replace('user2', 'user1');
-};
 
 function stockInflux(bank, user) {
 
@@ -97,8 +85,8 @@ function whichUser() {
 function switchUser() {
     user = document.getElementById("done_button");
     turn = whichUser();
-    if (turn === 'user1') {user.classList.replace('user1', 'user2');
-    else if (turn === 'user2') {user.classList.replace('user2', 'user1');
+    if (turn === 'user1') {user.classList.replace('user1', 'user2')}
+    else if (turn === 'user2') {user.classList.replace('user2', 'user1')}
 };
 
 const startTurn =function(bank, user1, user2) {
