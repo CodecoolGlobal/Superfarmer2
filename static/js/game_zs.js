@@ -1,5 +1,5 @@
 const marketAnimals = document.querySelectorAll('.market-animal');
-const ownAnimals = document.querySelectorAll('.own-animal');
+const ownAnimals = document.querySelectorAll('.user-image');
 console.log(marketAnimals);
 console.log(ownAnimals);
 

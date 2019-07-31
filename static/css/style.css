@@ -1,31 +1,69 @@
+body {
+    padding-bottom: 30px;
+}
+
+.card-img-top{
+    width: 30%;
+    height: 30%;
+}
+
+.num-text{
+    color: coral;
+    font-size: 30px;
+    font: bold 30px Ubuntu;
+}
+
+.card-text{
+    color: grey;
+    font-size: 15px;
+}
+
+
+.col-lg-1{
+    font-size: 35px;
+}
+
+
 .own-animal {
     cursor: pointer;
-    border: 2px midnightblue solid;
-    /*background-color: lavenderblush;*/
+    border: 1px black solid;
+    background-color: lavenderblush;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.own-animal-inactive {
+    cursor: pointer;
+    border: 1px black solid;
+    background-color: lavenderblush;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    opacity: 0.2;
 }
 
 .market-animal {
     border: 1px salmon solid;
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.market-animal-active {
+    border: 1px salmon solid;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.active {
+    opacity: 1;
 }
 
 .held {
-    border: solid 10px red;
-}
-
-.holder {
-    border:1px salmon solid;
+    border: solid 5px darksalmon;
 }
 
 .hovered {
-    background: mediumspringgreen;
+    background: lightsalmon;
     border-style: dashed;
-}
-
-.invisible {
-    /*display:none;*/
-    background-color: white;
-    border: 1px salmon solid;
-    opacity: 0.5;
 }
 
 img {
@@ -36,3 +74,13 @@ img {
     width: 80px;
     padding-bottom: 20px;
 }
+
+.col-1{
+    color: coral;
+    font: bold 30px Ubuntu;
+}
+
+#user1-rabbit {
+    text-align: right;
+}
+
