@@ -3,8 +3,7 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
 
 
-
-document.getElementById("dice_button").addEventListener("click", function() {
+function rollDice()  {
     var diceThrow1 = Math.floor(Math.random() * 12);
     var diceThrow2 = Math.floor(Math.random() * 12);
     var diceImgName1 = dice1[diceThrow1];
@@ -13,8 +12,15 @@ document.getElementById("dice_button").addEventListener("click", function() {
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
     document.getElementById("dice_button").disabled = true;
     return [diceImgName1, diceImgName2];
+}
 
-});
+const startTurn =function() {
+    let diceResult = rollDice();
+
+};
+
+document.getElementById("dice_button").addEventListener("click", startTurn);
+
 
 var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
 var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
@@ -68,5 +74,56 @@ user2SmallDog.innerHTML=user2.small_dog;
 user2RBigDog = document.getElementById("user2-big-dog");
 user2RBigDog.innerHTML=user2.big_dog;
 
+
+const marketAnimals = document.querySelectorAll('.market-animal');
+const ownAnimals = document.querySelectorAll('.own-animal');
+console.log(marketAnimals);
+console.log(ownAnimals);
+
+for (const ownAnimal of ownAnimals) {
+    console.log(ownAnimal);
+    ownAnimal.addEventListener('dragstart', dragStart);
+    ownAnimal.addEventListener('dragend', dragEnd);
+}
+for (const marketAnimal of marketAnimals){
+    console.log(marketAnimal);
+    marketAnimal.addEventListener('dragover', dragOver);
+    marketAnimal.addEventListener('dragenter', dragEnter);
+    marketAnimal.addEventListener('dragleave', dragLeave);
+    marketAnimal.addEventListener('drop', drop);
+}
+
+
+function dragStart(){
+    this.className += ' held';
+    setTimeout(() => (this.className = 'invisible'), 0);
+    console.log('start');
+}
+
+function dragEnd(){
+    this.className = 'own-animal';
+    console.log('end');
+}
+
+function dragOver(e){
+    e.preventDefault();
+    console.log('over');
+}
+
+function dragEnter(e){
+    e.preventDefault();
+    this.className += ' hovered';
+    console.log('enter');
+}
+
+function dragLeave(){
+    this.className = 'holder';
+    console.log('leave');
+}
+
+function drop(){
+    this.className = 'holder';
+
+}
 
 
