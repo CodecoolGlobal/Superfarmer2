@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Super Farmer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
+    <script src="/static/js/game.js" defer></script>
+    <script src="/static/js/game_zs.js" defer></script>
+</head>
+
+<body >
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style='background-color: salmon'>
+<div class="container">
+
+            <h1>Super Farmer</h1>
+            <button type="button" class="btn btn-info">New game</button>
+
+
+
+</div>
+    </nav>
+
+    <br>
+    <div class="container">
+    <bank>
+        <div class="row padding" align="center">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="card" style="width: 18rem;">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="card" style="width: 18rem;">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="card" style="width: 18rem;">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="card" style="width: 18rem;">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                <div class="card" style="width: 18rem;">
+                  <img src="..." class="card-img-top" alt="...">
+                  <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </bank>
+    <hr class="my-4">
+
+    <market>
+        <h1 align="center">Market place</h1>
+        <br>
+
+        <div class="row padding" align="center">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="row">
+                    <div class="col-1">6x</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
+                    <div class="col-1">=</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-1">2x</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
+                    <div class="col-1">=</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/pig.png" width="50px"></div></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="row">
+                    <div class="col-1">3x</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/pig.png" width="50px"></div></div>
+                    <div class="col-1">=</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/cow.png" width="50px"></div></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-1">2x</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/cow.png" width="50px"></div></div>
+                    <div class="col-1">=</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/horse.png" width="50px"></div></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="row">
+                    <div class="col-1">1x</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
+                    <div class="col-1">=</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/small_dog.png" width="50px"></div></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-1">1x</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/cow.png" width="50px"></div></div>
+                    <div class="col-1">=</div>
+                    <div class="col-5"><div class="market-animal"><img src="/static/images/big_dog.png" width="50px"></div></div>
+                </div>
+                <br>
+
+            </div>
+        </div>
+        <div align="right">
+            <button type="button" class="btn btn-info">Done</button>
+        </div>
+        <br>
+        <hr class="my-4">
+    </market>
+    <br>
+    <user-field>
+        <div class="row padding" align="center">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <h1>User 1</h1>
+                <br>
+                <div class="row">
+                    <div class="col-2" id="user1-rabbit">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
+                    <div class="col-2" id="user1-sheep">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-2" id="user1-pig">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/pig.png" width="50px"></div></div>
+                    <div class="col-2" id="user1-cow">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/cow.png" width="50px"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-2" id="user1-horse">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/horse.png" width="50px"></div></div>
+                    <div class="col-2" id="user1-small-dog">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/small_dog.png" width="50px"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-2" id="user1-big-dog">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/big_dog.png" width="50px"></div></div>
+                    <div class="col-2"></div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="row">
+                    <div id="dice_img_1" class="col-6">Not thrown yet</div>
+                    <div id="dice_img_2" class="col-6">Not thrown yet</div>
+                </div>
+                <div class="row" align="center">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <button id="dice_button" type="button" class="btn btn-info btn-lg btn-block">Throw the Dice!</button>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <h1>User 2</h1>
+                <br>
+                <div class="row">
+                    <div class="col-2" id="user1-rabbit">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
+                    <div class="col-2" id="user1-sheep">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-2" id="user1-pig">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/pig.png" width="50px"></div></div>
+                    <div class="col-2" id="user1-cow">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/cow.png" width="50px"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-2" id="user1-horse">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/horse.png" width="50px"></div></div>
+                    <div class="col-2" id="user1-small-dog">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/small_dog.png" width="50px"></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-2" id="user1-big-dog">num x</div>
+                    <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/big_dog.png" width="50px"></div></div>
+                    <div class="col-2"></div>
+                    <div class="col-4"></div>
+                </div>
+            </div>
+
+        </div>
+    </user-field>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+.own-animal {
+    cursor: pointer;
+    border: 1px black solid;
+    background-color: lavenderblush;
+}
+
+.market-animal {
+    border: 1px salmon solid;
+}
+
+.held {
+    border: solid 10px red;
+}
+
+.holder {
+    border:1px salmon solid;
+}
+
+.hovered {
+    background: mediumspringgreen;
+    border-style: dashed;
+}
+
+.invisible {
+    /*display:none;*/
+    background-color: white;
+    border: 1px salmon solid;
+}
+
+img {
+    width: 50px;
+}
+
+#dice_img_1 img, #dice_img_2 img {
+    width: 80px;
+    padding-bottom: 20px;
+}
