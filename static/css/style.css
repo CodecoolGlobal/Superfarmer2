@@ -1,3 +1,7 @@
+body {
+    padding-bottom: 30px;
+}
+
 .card-img-top{
     width: 30%;
     height: 30%;
@@ -24,10 +28,13 @@
     cursor: pointer;
     border: 1px black solid;
     background-color: lavenderblush;
+    border-radius: 10px;
+    margin-bottom: 10px;
 }
 
 .market-animal {
     border: 1px salmon solid;
+    border-radius: 10px;
 }
 
 .held {
@@ -63,3 +70,6 @@ img {
     font: bold 30px Ubuntu;
 }
 
+#user1-rabbit {
+    text-align: right;
+}

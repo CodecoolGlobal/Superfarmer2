@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Super Farmer</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
@@ -85,7 +85,7 @@
 
     <hr class="my-4">
 
-    <div class="container">
+    <div class="container-fluid">
     <market>
         <h1 align="center">Market place</h1>
         <br>
@@ -96,14 +96,14 @@
                     <div class="col-1">6x</div>
                     <div class="col-5"><div class="market-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
                     <div class="col-1">=</div>
-                    <div class="col-5"><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
+                    <div class="col-5 "><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-1">2x</div>
                     <div class="col-5"><div class="market-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
                     <div class="col-1">=</div>
-                    <div class="col-5"><div class="market-animal"><img src="/static/images/pig.png" width="50px"></div></div>
+                    <div class="col-5 "><div class="market-animal"><img src="/static/images/pig.png" width="50px"></div></div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -111,14 +111,14 @@
                     <div class="col-1">3x</div>
                     <div class="col-5"><div class="market-animal"><img src="/static/images/pig.png" width="50px"></div></div>
                     <div class="col-1">=</div>
-                    <div class="col-5"><div class="market-animal"><img src="/static/images/cow.png" width="50px"></div></div>
+                    <div class="col-5 "><div class="market-animal"><img src="/static/images/cow.png" width="50px"></div></div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="col-1">2x</div>
                     <div class="col-5"><div class="market-animal"><img src="/static/images/cow.png" width="50px"></div></div>
                     <div class="col-1">=</div>
-                    <div class="col-5"><div class="market-animal"><img src="/static/images/horse.png" width="50px"></div></div>
+                    <div class="col-5 "><div class="market-animal"><img src="/static/images/horse.png" width="50px"></div></div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -148,7 +148,7 @@
     </div>
 
     <br>
-    <div class="container">
+    <div class="container-fluid">
     <user-field>
         <div class="row padding" align="center">
             <div class="col-lg-4 col-md-6 col-sm-12">
@@ -198,25 +198,25 @@
                 <h1>User 2</h1>
                 <br>
                 <div class="row">
-                    <div class="col-2" id="user1-rabbit">num x</div>
+                    <div class="col-2" id="user2-rabbit">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/rabbit.png" width="50px"></div></div>
-                    <div class="col-2" id="user1-sheep">num x</div>
+                    <div class="col-2" id="user2-sheep">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/sheep.png" width="50px"></div></div>
                 </div>
                 <div class="row">
-                    <div class="col-2" id="user1-pig">num x</div>
+                    <div class="col-2" id="user2-pig">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/pig.png" width="50px"></div></div>
-                    <div class="col-2" id="user1-cow">num x</div>
+                    <div class="col-2" id="user2-cow">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/cow.png" width="50px"></div></div>
                 </div>
                 <div class="row">
-                    <div class="col-2" id="user1-horse">num x</div>
+                    <div class="col-2" id="user2-horse">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/horse.png" width="50px"></div></div>
-                    <div class="col-2" id="user1-small-dog">num x</div>
+                    <div class="col-2" id="user2-small-dog">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/small_dog.png" width="50px"></div></div>
                 </div>
                 <div class="row">
-                    <div class="col-2" id="user1-big-dog">num x</div>
+                    <div class="col-2" id="user2-big-dog">num x</div>
                     <div class="col-4"><div draggable="true" class="own-animal"><img src="/static/images/big_dog.png" width="50px"></div></div>
                     <div class="col-2"></div>
                     <div class="col-4"></div>
