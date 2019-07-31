@@ -2,26 +2,25 @@ const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', '
 const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
 var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
 
-function rollDice() {
-    var diceRoll1 = Math.floor(Math.random() * 12);
-    var diceRoll2 = Math.floor(Math.random() * 12);
-    var diceImgName1 = dice1[diceRoll1];
-    var diceImgName2 = dice2[diceRoll2];
+
+function rollDice()  {
+    var diceThrow1 = Math.floor(Math.random() * 12);
+    var diceThrow2 = Math.floor(Math.random() * 12);
+    var diceImgName1 = dice1[diceThrow1];
+    var diceImgName2 = dice2[diceThrow2];
     document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
     document.getElementById("dice_button").disabled = true;
     return [diceImgName1, diceImgName2];
+}
+
+const startTurn =function() {
+    let diceResult = rollDice();
+
 };
 
+document.getElementById("dice_button").addEventListener("click", startTurn);
 
-document.getElementById("dice_button").addEventListener("click", function() {
-
-    document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
-    document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
-    document.getElementById("dice_button").disabled = true;
-    return [diceImgName1, diceImgName2];
-
-});
 
 var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
 var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
@@ -94,6 +93,7 @@ for (const marketAnimal of marketAnimals){
 }
 
 
+
 function dragStart(){
     this.className += ' held';
     setTimeout(() => (this.className = 'invisible'), 0);
@@ -123,11 +123,7 @@ function dragLeave(){
 
 function drop(){
     this.className = 'holder';
-    for (const ownAnimal of ownAnimals){
-        this.append(ownAnimal);
-    }
-    console.log('drop');
-}
 
+}
 
 
