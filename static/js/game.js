@@ -11,6 +11,7 @@ document.getElementById("dice_button").addEventListener("click", function() {
     var diceImgName2 = dice2[diceThrow2];
     document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
+    document.getElementById("dice_button").disabled = true;
     return [diceImgName1, diceImgName2];
 
 });
