@@ -12,20 +12,26 @@ function rollDice()  {
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
     document.getElementById("dice_button").disabled = true;
     return [diceImgName1, diceImgName2];
-};
+}
 
 function whichUser() {
     user = document.getElementById("done_button");
-    if (user.classList.contains("user1")) {return 'user1'}
-    else if (user.classList.contains("user2")) {return 'user2'}
-};
+    if (user.classList.contains("user1")) {
+        return 'user1';
+    } else if (user.classList.contains("user2")) {
+        return 'user2';
+    }
+}
 
 function switchUser() {
     user = document.getElementById("done_button");
     turn = whichUser();
-    if (turn === 'user1') {user.classList.replace('user1', 'user2');
-    else if (turn === 'user2') {user.classList.replace('user2', 'user1');
-};
+    if (turn === 'user1') {
+        user.classList.replace('user1', 'user2');
+    } else if (turn === 'user2') {
+        user.classList.replace('user2', 'user1');
+    }
+}
 
 const startTurn =function() {
     let diceResult = rollDice();
@@ -105,8 +111,6 @@ for (const marketAnimal of marketAnimals){
     marketAnimal.addEventListener('drop', drop);
 }
 
-
-
 function dragStart(){
     this.className += ' held';
     setTimeout(() => (this.className = 'own-animal-inactive'), 0);
@@ -134,8 +138,10 @@ function dragLeave(){
     console.log('leave');
 }
 
-function drop(){
+function drop() {
     this.className += ' active';
     console.log('drop');
 }
+
+console.log(rollDice());
 
