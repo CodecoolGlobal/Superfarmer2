@@ -129,18 +129,18 @@ const startTurn =function(bank, user1, user2) {
 
 const winCheck = function(user1, user2){
    if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0 && user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-      document.getElementById("done-button").disabled = true;
-      document.getElementById("dice-button").disabled = true;
+      //document.getElementById("done-button").disabled = true;
+      //document.getElementById("dice-button").disabled = true;
       alert('Congratulations, it is a draw!')
     }
     else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0) {
-       document.getElementById("done-button").disabled = true;
-       document.getElementById("dice-button").disabled = true;
+       //document.getElementById("done-button").disabled = true;
+       //document.getElementById("dice-button").disabled = true;
        alert('Congratulations, User1 won!')
     }
    else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-       document.getElementById("done-button").disabled = true;
-       document.getElementById("dice-button").disabled = true;
+       //document.getElementById("done-button").disabled = true;
+       //document.getElementById("dice-button").disabled = true;
        alert('Congratulations, User2 won!')
     }
 };
@@ -188,7 +188,7 @@ const endTurn = function(bank, user1, user2){
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
-    document.getElementById("done-button").disabled = true;
+    //document.getElementById("done-button").disabled = true;
     switchUser();
     //document.getElementById("dice-button").disabled = false;
 };
