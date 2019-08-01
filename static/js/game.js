@@ -1,11 +1,11 @@
 const dice1 = ['fox', 'rabbit', 'fox', 'wolf', 'pig', 'fox', 'rabbit', 'fox', 'pig', 'sheep', 'sheep', 'horse'];
 const dice2 = ['cow', 'pig', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'fox', 'rabbit', 'fox', 'sheep', 'sheep'];
 
-
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
+    document.getElementById("new-game-button").addEventListener("click", function () {location.reload(true);});
     showValues(bank, user1, user2)
 
 };
@@ -63,6 +63,10 @@ const main = function() {
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     showValues(bank, user1, user2);
     buttonEvents(bank, user1, user2);
+    var user1Name = prompt('User 1:');
+    document.getElementById("user1-name").innerHTML = user1Name;
+    var user2Name = prompt('User 2:');
+    document.getElementById("user2-name").innerHTML = user2Name;
 };
 
 
@@ -137,9 +141,17 @@ function switchUser() {
     let turn = whichUser();
     console.log("in the beg of switchUser function the current user is", user);
     if (turn === 'user1'){
-        user.classList.replace('user1', 'user2')
+        user.classList.replace('user1', 'user2');
+        let activePlayer = document.getElementById("user1-field")
+        activePlayer.classList.remove("plays");
+        let nextPlayer = document.getElementById("user2-field");
+        nextPlayer.classList.add("plays");
     } else if (turn === 'user2'){
         user.classList.replace('user2', 'user1')
+        let activePlayer = document.getElementById("user2-field")
+        activePlayer.classList.remove("plays");
+        let nextPlayer = document.getElementById("user1-field");
+        nextPlayer.classList.add("plays");
     }
     var newturn = whichUser();
     console.log("in switchUser function, after switching is done", newturn)
@@ -148,7 +160,7 @@ function switchUser() {
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
     user = whichUser();
-    console.log("in startTurn function user without let or var gives", user)
+    console.log("in beginning of startTurn function user1", user1)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
@@ -160,6 +172,8 @@ const startTurn =function(bank, user1, user2) {
     showValues(bank, user1, user2);
 
     document.getElementById("done-button").disabled = false;
+    document.getElementById("dice_img_1").classList.remove("hiddendice");
+    document.getElementById("dice_img_2").classList.remove("hiddendice");
 };
 
 const winCheck = function(user1, user2){
@@ -316,6 +330,8 @@ const endTurn = function(bank, user1, user2){
     document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice-button").disabled = false;
+    document.getElementById("dice_img_1").classList.add("hiddendice")
+    document.getElementById("dice_img_2").classList.add("hiddendice")
 };
 
 window.addEventListener('load', main);
@@ -366,4 +382,3 @@ function drop(){
     this.className += ' active';
 
 }
-

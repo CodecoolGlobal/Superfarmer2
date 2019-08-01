@@ -83,3 +83,11 @@ img {
     color: coral;
     font: bold 30px Ubuntu;
 }
+
+.plays{
+    background-color: lightgrey;
+}
+
+.hiddendice {
+    visibility: hidden;
+}
