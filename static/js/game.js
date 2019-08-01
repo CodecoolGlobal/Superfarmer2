@@ -6,11 +6,12 @@ const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
-    showValues()
+    showValues(bank, user1, user2);
 
 };
 
 function showValues(bank, user1, user2){
+    console.log("showValues user1:", user1);
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
     user1Sheep = document.getElementById("user1-sheep");
@@ -77,8 +78,8 @@ function stockInflux(bank, user) {
 }
 
 const stockGrowth = function(bank, user) {
-
-    for (animal of user) {
+    console.log("stockGrowth", user);
+    for (const animal of Object.keys(user)) {
     offsprings = Math.floor(user[animal] / 2);
     if (offsprings <= bank.animal) {
         user[animal] = user[animal] + offsprings;
@@ -94,8 +95,10 @@ const stockGrowth = function(bank, user) {
 function whichUser() {
     user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
+        console.log("which user function: user1")
         return 'user1';
     } else if (user.classList.contains("user2")){
+        console.log("which user function: user2")
         return 'user2';
     }
 }
