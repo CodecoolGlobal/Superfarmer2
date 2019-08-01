@@ -54,7 +54,7 @@ function showValues(bank, user1, user2){
 }
 
 const main = function() {
-    var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
+    var bank = {'rabbit': 60, 'sheep': 24, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     showValues(bank, user1, user2);
@@ -118,7 +118,6 @@ function whichUser() {
 
 function switchUser() {
     user = document.getElementById("done-button");
-    let turn = whichUser();
     let turn = whichUser();
     console.log("in the beg of switchUser function the current user is", user);
     if (turn === 'user1'){
