@@ -106,7 +106,7 @@ function whichUser() {
 
 function switchUser() {
     user = document.getElementById("done-button");
-    var turn = whichUser();
+    let turn = whichUser();
     console.log("in the beg of switchUser function the current user is", user);
     if (turn === 'user1'){
         user.classList.replace('user1', 'user2')
