@@ -5,7 +5,7 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
-    document.getElementById("dice_button").addEventListener("click", startTurn);
+    document.getElementById("dice_button").addEventListener("click", function () {startTurn(bank, user1, user2);});
     showValues()
 
 };
@@ -91,7 +91,7 @@ const stockGrowth = function(bank, user) {
 };
 
 function whichUser() {
-    user = document.getElementById("done_button");
+    user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
         return 'user1';
     } else if (user.classList.contains("user2")){
@@ -100,7 +100,7 @@ function whichUser() {
 }
 
 function switchUser() {
-    user = document.getElementById("done_button");
+    user = document.getElementById("done-button");
     turn = whichUser();
     if (turn === 'user1'){
         user.classList.replace('user1', 'user2')
@@ -124,17 +124,17 @@ const startTurn =function(bank, user1, user2) {
 
 const winCheck = function(user1, user2){
    if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0 && user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-      document.getElementById("done_button").disabled = true;
+      document.getElementById("done-button").disabled = true;
       document.getElementById("dice_button").disabled = true;
       alert('Congratulations, it is a draw!')
     }
     else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0) {
-       document.getElementById("done_button").disabled = true;
+       document.getElementById("done-button").disabled = true;
        document.getElementById("dice_button").disabled = true;
        alert('Congratulations, User1 won!')
     }
    else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-       document.getElementById("done_button").disabled = true;
+       document.getElementById("done-button").disabled = true;
        document.getElementById("dice_button").disabled = true;
        alert('Congratulations, User2 won!')
     }
@@ -183,7 +183,7 @@ const endTurn = function(bank, user1, user2){
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
-    document.getElementById("done_button").disabled = true;
+    document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice_button").disabled = false;
 };
