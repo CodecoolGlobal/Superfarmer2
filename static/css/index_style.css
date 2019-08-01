@@ -1,0 +1,29 @@
+
+.link{
+    margin: 2px 50px 2px 50px;
+    font: bold 50px Ubuntu;
+    color: coral;
+}
+
+
+.logo{
+    width: 15%;
+    margin: 20px 50px 20px 50px;
+    display: inline;
+}
+
+
+.bg{
+    width: 80%;
+    alignment: center;
+}
+
+
+h1{
+    display: inline;
+}
+
+
+body{
+    background: lightgrey;
+}
