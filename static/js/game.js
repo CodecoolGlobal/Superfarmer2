@@ -1,6 +1,6 @@
 const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
 const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
-var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
+var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6};
 
 
 
@@ -15,6 +15,7 @@ document.getElementById("dice_button").addEventListener("click", function() {
     return [diceImgName1, diceImgName2];
 
 });
+
 
 var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
 var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
@@ -70,3 +71,12 @@ user2RBigDog.innerHTML=user2.big_dog;
 
 
 
+numTexts = document.querySelectorAll(".num-text");
+var bankValues = [60, 14, 20, 12, 6];
+for (i=0; i<bankValues.length; i++) {
+    for (let numText of numTexts) {
+        numText.innerHTML = bankValues[i];
+    }
+}
+
+console.log(numTexts);

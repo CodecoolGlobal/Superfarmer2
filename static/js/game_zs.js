@@ -1,15 +1,12 @@
 const marketAnimals = document.querySelectorAll('.market-animal');
 const ownAnimals = document.querySelectorAll('.own-animal');
-console.log(marketAnimals);
-console.log(ownAnimals);
+
 
 for (const ownAnimal of ownAnimals) {
-    console.log(ownAnimal);
     ownAnimal.addEventListener('dragstart', dragStart);
     ownAnimal.addEventListener('dragend', dragEnd);
 }
 for (const marketAnimal of marketAnimals){
-    console.log(marketAnimal);
     marketAnimal.addEventListener('dragover', dragOver);
     marketAnimal.addEventListener('dragenter', dragEnter);
     marketAnimal.addEventListener('dragleave', dragLeave);
