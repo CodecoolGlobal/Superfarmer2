@@ -1,5 +1,5 @@
-const dice1 = ['fox', 'rabbit', 'fox', 'wolf', 'pig', 'fox', 'rabbit', 'fox', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'fox', 'rabbit', 'fox', 'sheep', 'sheep'];
+const dice1 = ['cow', 'rabbit', 'cow', 'sheep', 'pig', 'pig', 'rabbit', 'pig', 'pig', 'sheep', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'cow', 'rabbit', 'rabbit', 'rabbit', 'cow', 'cow', 'rabbit', 'sheep', 'sheep', 'sheep'];
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
@@ -109,20 +109,25 @@ const stockInflux = function(diceResult, bank, user) {
 
 const stockGrowth = function(bank, user) {
     console.log("in stockGrowth function the received stock is:", user);
-    for (const animal of Object.keys(user)) {
+    for (var animal of Object.keys(user)) {
         let offsprings = Math.floor(user[animal] / 2);
-        console.log("in the loop in stockGrowtch", animal, user[animal]);
-        if (offsprings <= bank.animal) {
-            user[animal] = user[animal] + offsprings;
-            bank.animal = bank.animal - offsprings;
-        } else {
-            growth = bank.animal;
-            user[animal] = user[animal] + growth;
-            console.log(animal, user[animal]);
-            bank.animal = 0;
-        }
+        console.log("in the loop in stockGrowth the bank is:", animal, bank[animal]);
+        console.log("offsprings of ",animal, offsprings);
+        user[animal] +=  offsprings;
+        bank[animal] -= offsprings;
+        // if (offsprings <= bank.animal) {
+        //     user[animal] +=  offsprings;
+        //     bank.animal = bank.animal - offsprings;
+        // console.log("stock in conditional, increased?", animal, user[animal])
+        // } else {
+        //     growth = bank.animal;
+        //     user[animal] = user[animal] + growth;
+        // console.log("stock in conditional, increased?", animal, user[animal])
+        //     bank.animal = 0;
+        // }
     }
-        console.log("at the end of the StockGrowth", user)
+        console.log("at the end of the StockGrowth the bank is :", bank);
+    return [bank, user];
 };
 
 function whichUser() {
@@ -163,11 +168,12 @@ const startTurn =function(bank, user1, user2) {
     console.log("in beginning of startTurn function user1", user1)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
-        stockGrowth(bank, user1)}
+        [bank, user1]=stockGrowth(bank, user1)};
 
     if (user==="user2") {
         stockInflux(diceResult, bank, user2);
-        stockGrowth(bank, user2)}
+        [bank, user2]=stockGrowth(bank, user2);
+        }
 
     showValues(bank, user1, user2);
 
@@ -381,4 +387,4 @@ function dragLeave(){
 function drop(){
     this.className += ' active';
 
-}
+};
