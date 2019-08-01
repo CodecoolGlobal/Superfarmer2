@@ -3,8 +3,8 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 
 
 const buttonEvents = function (bank, user1, user2) {
-    document.getElementById("done-button").disabled = true;
-    document.getElementById("done-button").addEventListener("click", endTurn);
+    document.getElementById("done-button").disabled = false;
+    document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice_button").addEventListener("click", startTurn);
     showValues()
 
