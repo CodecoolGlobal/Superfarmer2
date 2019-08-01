@@ -135,7 +135,7 @@ function switchUser() {
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
     user = whichUser();
-    console.log("in startTurn function user without let or var gives", user)
+    console.log("in beginning of startTurn function user1", user1)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
