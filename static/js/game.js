@@ -81,16 +81,19 @@ function stockInflux(bank, user) {
 const stockGrowth = function(bank, user) {
     console.log("in stockGrowth function the received stock is:", user);
     for (const animal of Object.keys(user)) {
-    offsprings = Math.floor(user[animal] / 2);
-    if (offsprings <= bank.animal) {
-        user[animal] = user[animal] + offsprings;
-        bank.animal = bank.animal - offsprings;
-    } else {
-        growth = bank.animal;
-        user[animal] = user[animal] + growth;
-        bank.animal = 0;
+        let offsprings = Math.floor(user[animal] / 2);
+        console.log("in the loop in stockGrowtch", animal, user[animal]);
+        if (offsprings <= bank.animal) {
+            user[animal] = user[animal] + offsprings;
+            bank.animal = bank.animal - offsprings;
+        } else {
+            growth = bank.animal;
+            user[animal] = user[animal] + growth;
+            console.log(animal, user[animal]);
+            bank.animal = 0;
+        }
     }
-}
+        console.log("at the end of the StockGrowth", user)
 };
 
 function whichUser() {
@@ -120,7 +123,7 @@ function switchUser() {
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
     user = whichUser();
-
+    console.log("in startTurn function user without let or var gives", user)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
@@ -241,7 +244,7 @@ const endTurn = function(bank, user1, user2){
     }
 
     showValues(bank, user1,  user2);
-    turn = whichUser();
+
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
