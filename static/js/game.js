@@ -1,18 +1,16 @@
-const dice1 = ['fox', 'rabbit', 'fox', 'wolf', 'pig', 'fox', 'rabbit', 'fox', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'fox', 'rabbit', 'fox', 'sheep', 'sheep'];
+const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
+    showValues(bank, user1, user2);
     document.getElementById("new-game-button").addEventListener("click", function () {location.reload(true);});
     showValues(bank, user1, user2)
 
 };
-
-function inActivateUserAnimals() {
-
-}
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -382,3 +380,4 @@ function drop(){
     this.className += ' active';
 
 }
+
