@@ -3,10 +3,15 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 
 
 const buttonEvents = function (bank, user1, user2) {
-    document.getElementById("done-button").disabled = true;
-    document.getElementById("done-button").addEventListener("click", endTurn);
+    console.log(`value of bank.cow ${bank.cow}`);
+    document.getElementById("done-button").disabled = false;
+    document.getElementById("done-button").addEventListener("click", function() {endTurn(bank, user1, user2);});
     document.getElementById("dice_button").addEventListener("click", startTurn);
+    showValues()
 
+};
+
+function showValues(bank, user1, user2){
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
     user1Sheep = document.getElementById("user1-sheep");
@@ -35,12 +40,22 @@ const buttonEvents = function (bank, user1, user2) {
     user2SmallDog.innerHTML=user2.small_dog;
     user2RBigDog = document.getElementById("user2-big-dog");
     user2RBigDog.innerHTML=user2.big_dog;
-};
+    bankRabbitNr = document.getElementById("bank-rabbit-nr");
+    bankRabbitNr.textContent = bank.rabbit;
+    bankSheepNr = document.getElementById("bank-sheep-nr");
+    bankSheepNr.innerHTML = bank.sheep;
+    bankPigNr = document.getElementById("bank-pig-nr");
+    bankPigNr.innerHTML = bank.pig;
+    bankCowNr = document.getElementById("bank-cow-nr");
+    bankCowNr.innerHTML = bank.cow;
+    bankHorseNr = document.getElementById("bank-horse-nr");
+    bankHorseNr.innerHTML = bank.horse;
+}
 
 const main = function() {
     var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
-    var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
-    var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
+    var user1 = {'rabbit': 5, 'sheep': 0, 'pig': 0, 'cow': 4, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
+    var user2 = {'rabbit': 0, 'sheep': 4, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     buttonEvents(bank, user1, user2);
 };
 
@@ -108,8 +123,45 @@ const startTurn =function(bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
 };
 
-const endTurn = function(){
-
+const endTurn = function(bank, user1, user2){
+    if (document.getElementById("6-rabbits").className === "market-animal hovered active"){
+        bank.rabbit += 6;
+        console.log("missing decrease user by 6");
+    } else if (document.getElementById("1-sheep").className === "market-animal hovered active"){
+        bank.sheep += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("2-sheeps").className === "market-animal hovered active"){
+        bank.sheep += 2;
+        console.log("missing decrease user by 2");
+    } else if (document.getElementById("1-pig").className === "market-animal hovered active"){
+        bank.pig += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("3-pigs").className === "market-animal hovered active"){
+        bank.pig += 3;
+        console.log("missing decrease user by 3");
+    } else if (document.getElementById("1-cow").className === "market-animal hovered active"){
+        bank.cow += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("2-cows").className === "market-animal hovered active"){
+        bank.cow += 2;
+        console.log("missing decrease user by 2");
+    } else if (document.getElementById("1-horse").className === "market-animal hovered active"){
+        bank.horse += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("1-sheep-vs-dog").className === "market-animal hovered active"){
+        bank.sheep += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("1-small-dog").className === "market-animal hovered active"){
+        bank.small_dog += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("1-cow-vs-dog").className === "market-animal hovered active"){
+        bank.cow += 1;
+        console.log("missing decrease user by 1");
+    } else if (document.getElementById("1-big-dog").className === "market-animal hovered active"){
+        bank.big_dog += 1;
+        console.log("missing decrease user by 1");
+    }
+    showValues(bank, user1,  user2);
 };
 
 window.addEventListener('load', main);
@@ -117,16 +169,12 @@ window.addEventListener('load', main);
 
 const marketAnimals = document.querySelectorAll('.market-animal');
 const ownAnimals = document.querySelectorAll('.own-animal');
-console.log(marketAnimals);
-console.log(ownAnimals);
 
 for (const ownAnimal of ownAnimals) {
-    console.log(ownAnimal);
     ownAnimal.addEventListener('dragstart', dragStart);
     ownAnimal.addEventListener('dragend', dragEnd);
 }
 for (const marketAnimal of marketAnimals){
-    console.log(marketAnimal);
     marketAnimal.addEventListener('dragover', dragOver);
     marketAnimal.addEventListener('dragenter', dragEnter);
     marketAnimal.addEventListener('dragleave', dragLeave);
