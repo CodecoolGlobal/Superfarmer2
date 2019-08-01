@@ -358,7 +358,7 @@ function dragStart(){
 }
 
 function dragEnd(){
-    this.className = 'own-animal-inactive';
+    this.className = 'own-animal';
 
 }
 
