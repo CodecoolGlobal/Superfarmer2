@@ -7,7 +7,6 @@ const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
     document.getElementById("new-game-button").addEventListener("click", function () {reload()});
-    document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
     showValues()
 
 };
@@ -73,7 +72,7 @@ function rollDice()  {
     var diceImgName2 = dice2[diceRoll2];
     document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
-    document.getElementById("dice-button").disabled = true;
+    //document.getElementById("dice-button").disabled = true;
     return [diceImgName1, diceImgName2];
 };
 
@@ -117,7 +116,6 @@ function switchUser() {
 }
 
 const startTurn =function(bank, user1, user2) {
-    document.getElementById("dice_button")
     let diceResult = rollDice();
     let user = whichUser();
     if (user==="user1") {
