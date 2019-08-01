@@ -1,18 +1,16 @@
-const dice1 = ['cow', 'rabbit', 'cow', 'sheep', 'pig', 'pig', 'rabbit', 'pig', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'cow', 'rabbit', 'rabbit', 'rabbit', 'cow', 'cow', 'rabbit', 'sheep', 'sheep', 'sheep'];
+
+const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
+    showValues(bank, user1, user2);
     document.getElementById("new-game-button").addEventListener("click", function () {location.reload(true);});
     showValues(bank, user1, user2)
 
 };
-
-function inActivateUserAnimals() {
-
-}
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -20,7 +18,7 @@ function showValues(bank, user1, user2){
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
     user1Sheep = document.getElementById("user1-sheep");
-    user1Sheep .innerHTML=user1.sheep;
+    user1Sheep.innerHTML=user1.sheep;
     user1Pig = document.getElementById("user1-pig");
     user1Pig.innerHTML=user1.pig;
     user1Cow = document.getElementById("user1-cow");
@@ -84,23 +82,40 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
-        if (result === 'fox') {
+        if (result === 'fox' && user.small_dog === 0) {
             user.rabbit = 0;
         }
-        else if (result === 'wolf') {
+        else if (result === 'fox' && user.small_dog > 0) {
+            user.small_dog = 0;
+        }
+        else if (result === 'wolf' && user.big_dog === 0) {
             user.rabbit = 0;
             user.sheep = 0;
             user.pig = 0;
             user.cow = 0;
+            user.small_dog = 0;
+        }
+        else if (result === 'wolf' && user.big_dog > 0) {
+            user.big_dog = 0;
         }
         for (let animal in user) {
             if (result === animal) {
-                user[animal]++;
+                if (bank[animal] === 0) {
+                    user[animal] = user[animal];
+                }
+                else {
+                    user[animal]++;
+                }
             }
         }
         for (animal in bank) {
             if (result === animal) {
-                bank[animal]--;
+                if (bank[animal] > 0) {
+                    bank[animal]--;
+                }
+            else {
+                bank[animal] = 0;
+                }
             }
         }
     }
@@ -364,7 +379,7 @@ function dragStart(){
 }
 
 function dragEnd(){
-    this.className = 'own-animal-inactive';
+    this.className = 'own-animal';
 
 }
 
@@ -387,4 +402,5 @@ function dragLeave(){
 function drop(){
     this.className += ' active';
 
-};
+}
+
