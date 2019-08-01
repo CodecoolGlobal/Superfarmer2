@@ -3,9 +3,8 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 
 
 const buttonEvents = function (bank, user1, user2) {
-    console.log(`value of bank.cow ${bank.cow}`);
-    document.getElementById("done-button").disabled = false;
-    document.getElementById("done-button").addEventListener("click", function() {endTurn(bank, user1, user2);});
+    document.getElementById("done-button").disabled = true;
+    document.getElementById("done-button").addEventListener("click", endTurn);
     document.getElementById("dice_button").addEventListener("click", startTurn);
     showValues()
 
@@ -54,8 +53,8 @@ function showValues(bank, user1, user2){
 
 const main = function() {
     var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
-    var user1 = {'rabbit': 5, 'sheep': 0, 'pig': 0, 'cow': 4, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
-    var user2 = {'rabbit': 0, 'sheep': 4, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
+    var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
+    var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     buttonEvents(bank, user1, user2);
 };
 
@@ -76,7 +75,7 @@ function stockInflux(bank, user) {
 
 }
 
-const stockGrowth = function(bank, user) {;
+const stockGrowth = function(bank, user) {
 
     for (animal of user) {
     offsprings = Math.floor(user[animal] / 2);
@@ -123,6 +122,24 @@ const startTurn =function(bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
 };
 
+const winCheck = function(user1, user2){
+   if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0 && user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
+      document.getElementById("done_button").disabled = true;
+      document.getElementById("dice_button").disabled = true;
+      alert('Congratulations, it is a draw!')
+    }
+    else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0) {
+       document.getElementById("done_button").disabled = true;
+       document.getElementById("dice_button").disabled = true;
+       alert('Congratulations, User1 won!')
+    }
+   else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
+       document.getElementById("done_button").disabled = true;
+       document.getElementById("dice_button").disabled = true;
+       alert('Congratulations, User2 won!')
+    }
+};
+
 const endTurn = function(bank, user1, user2){
     if (document.getElementById("6-rabbits").className === "market-animal hovered active"){
         bank.rabbit += 6;
@@ -162,6 +179,13 @@ const endTurn = function(bank, user1, user2){
         console.log("missing decrease user by 1");
     }
     showValues(bank, user1,  user2);
+    turn = whichUser();
+    if (turn === 'user2') {
+        winCheck(user1, user2)
+    }
+    document.getElementById("done_button").disabled = true;
+    switchUser();
+    document.getElementById("dice_button").disabled = false;
 };
 
 window.addEventListener('load', main);
@@ -208,7 +232,7 @@ function dragLeave(){
     console.log('leave');
 }
 
-function drop() {
+function drop(){
     this.className += ' active';
     console.log('drop');
 }
