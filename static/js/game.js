@@ -20,7 +20,7 @@ function showValues(bank, user1, user2){
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
     user1Sheep = document.getElementById("user1-sheep");
-    user1Sheep .innerHTML=user1.sheep;
+    user1Sheep.innerHTML=user1.sheep;
     user1Pig = document.getElementById("user1-pig");
     user1Pig.innerHTML=user1.pig;
     user1Cow = document.getElementById("user1-cow");
