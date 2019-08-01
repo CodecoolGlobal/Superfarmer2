@@ -7,9 +7,10 @@ const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
     showValues(bank, user1, user2);
+    document.getElementById("new-game-button").addEventListener("click", function () {location.reload(true);});
+    showValues(bank, user1, user2)
 
 };
-
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -43,7 +44,7 @@ function showValues(bank, user1, user2){
     user2RBigDog = document.getElementById("user2-big-dog");
     user2RBigDog.innerHTML=user2.big_dog;
     bankRabbitNr = document.getElementById("bank-rabbit-nr");
-    bankRabbitNr.textContent = bank.rabbit;
+    bankRabbitNr.innerHTML = bank.rabbit;
     bankSheepNr = document.getElementById("bank-sheep-nr");
     bankSheepNr.innerHTML = bank.sheep;
     bankPigNr = document.getElementById("bank-pig-nr");
@@ -52,17 +53,18 @@ function showValues(bank, user1, user2){
     bankCowNr.innerHTML = bank.cow;
     bankHorseNr = document.getElementById("bank-horse-nr");
     bankHorseNr.innerHTML = bank.horse;
-
 }
 
 const main = function() {
     var bank = {'rabbit': 60, 'sheep': 24, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
-    inactivateUserAnimals(user1);
     showValues(bank, user1, user2);
     buttonEvents(bank, user1, user2);
-
+    var user1Name = prompt('User 1:');
+    document.getElementById("user1-name").innerHTML = user1Name;
+    var user2Name = prompt('User 2:');
+    document.getElementById("user2-name").innerHTML = user2Name;
 };
 
 
@@ -80,6 +82,15 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
+        if (result === 'fox') {
+            user.rabbit = 0;
+        }
+        else if (result === 'wolf') {
+            user.rabbit = 0;
+            user.sheep = 0;
+            user.pig = 0;
+            user.cow = 0;
+        }
         for (let animal in user) {
             if (result === animal) {
                 user[animal]++;
@@ -115,10 +126,10 @@ const stockGrowth = function(bank, user) {
 function whichUser() {
     user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
-        console.log("which user function says it is: user1")
+        console.log("which user function says it is: user1");
         return 'user1';
     } else if (user.classList.contains("user2")){
-        console.log("which user function says it is: user2")
+        console.log("which user function says it is: user2");
         return 'user2';
     }
 }
@@ -128,9 +139,17 @@ function switchUser() {
     let turn = whichUser();
     console.log("in the beg of switchUser function the current user is", user);
     if (turn === 'user1'){
-        user.classList.replace('user1', 'user2')
+        user.classList.replace('user1', 'user2');
+        let activePlayer = document.getElementById("user1-field")
+        activePlayer.classList.remove("plays");
+        let nextPlayer = document.getElementById("user2-field");
+        nextPlayer.classList.add("plays");
     } else if (turn === 'user2'){
         user.classList.replace('user2', 'user1')
+        let activePlayer = document.getElementById("user2-field")
+        activePlayer.classList.remove("plays");
+        let nextPlayer = document.getElementById("user1-field");
+        nextPlayer.classList.add("plays");
     }
     var newturn = whichUser();
     console.log("in switchUser function, after switching is done", newturn)
@@ -139,7 +158,7 @@ function switchUser() {
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
     user = whichUser();
-    console.log("in startTurn function user without let or var gives", user)
+    console.log("in beginning of startTurn function user1", user1)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
@@ -151,6 +170,8 @@ const startTurn =function(bank, user1, user2) {
     showValues(bank, user1, user2);
 
     document.getElementById("done-button").disabled = false;
+    document.getElementById("dice_img_1").classList.remove("hiddendice");
+    document.getElementById("dice_img_2").classList.remove("hiddendice");
 };
 
 const winCheck = function(user1, user2){
@@ -299,7 +320,6 @@ const endTurn = function(bank, user1, user2){
         marketAnimal.className = "market-animal";
     }
 
-
     showValues(bank, user1,  user2);
 
     if (turn === 'user2') {
@@ -308,6 +328,8 @@ const endTurn = function(bank, user1, user2){
     document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice-button").disabled = false;
+    document.getElementById("dice_img_1").classList.add("hiddendice")
+    document.getElementById("dice_img_2").classList.add("hiddendice")
 };
 
 window.addEventListener('load', main);
@@ -358,3 +380,4 @@ function drop(){
     this.className += ' active';
 
 }
+
