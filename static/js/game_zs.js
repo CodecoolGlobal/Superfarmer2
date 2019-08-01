@@ -1,6 +1,9 @@
 const marketAnimals = document.querySelectorAll('.market-animal');
 const ownAnimals = document.querySelectorAll('.own-animal');
 
+const ownAnimals = document.querySelectorAll('.user-image');
+console.log(marketAnimals);
+console.log(ownAnimals);
 
 for (const ownAnimal of ownAnimals) {
     ownAnimal.addEventListener('dragstart', dragStart);
@@ -43,8 +46,5 @@ function dragLeave(){
 
 function drop(){
     this.className = 'holder';
-    for (const ownAnimal of ownAnimals){
-        this.append(ownAnimal);
-    }
     console.log('drop');
 }

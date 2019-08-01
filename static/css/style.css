@@ -32,28 +32,38 @@ body {
     margin-bottom: 10px;
 }
 
+.own-animal-inactive {
+    cursor: pointer;
+    border: 1px black solid;
+    background-color: lavenderblush;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    opacity: 0.2;
+}
+
 .market-animal {
     border: 1px salmon solid;
     border-radius: 10px;
+    opacity: 0.5;
+}
+
+.market-animal-active {
+    border: 1px salmon solid;
+    border-radius: 10px;
+    opacity: 1;
+}
+
+.active {
+    opacity: 1;
 }
 
 .held {
-    border: solid 10px red;
-}
-
-.holder {
-    border:1px salmon solid;
+    border: solid 5px darksalmon;
 }
 
 .hovered {
-    background: mediumspringgreen;
+    background: lightsalmon;
     border-style: dashed;
-}
-
-.invisible {
-    /*display:none;*/
-    background-color: white;
-    border: 1px salmon solid;
 }
 
 img {
@@ -68,8 +78,4 @@ img {
 .col-1{
     color: coral;
     font: bold 30px Ubuntu;
-}
-
-#user1-rabbit {
-    text-align: right;
 }
