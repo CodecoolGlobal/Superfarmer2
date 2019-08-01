@@ -188,7 +188,7 @@ const endTurn = function(bank, user1, user2){
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
-    //document.getElementById("done-button").disabled = true;
+    document.getElementById("done-button").disabled = true;
     switchUser();
     //document.getElementById("dice-button").disabled = false;
 };
