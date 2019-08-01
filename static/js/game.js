@@ -1,11 +1,17 @@
 const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
 const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
 
+function reload() {window.location.reload(true)};
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = true;
     document.getElementById("done-button").addEventListener("click", endTurn);
-    document.getElementById("dice_button").addEventListener("click", startTurn);
+    document.getElementById("dice-button").addEventListener("click", startTurn);
+    document.getElementById("new-game-button").addEventListener("click", reload);
+    var user1Name = prompt('User 1:');
+    document.getElementById("user1-name").innerHTML=user1Name;
+    var user2Name = prompt('User 2:');
+    document.getElementById("user2-name").innerHTML=user2Name;
 
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
@@ -50,9 +56,9 @@ function rollDice()  {
     var diceRoll2 = Math.floor(Math.random() * 12);
     var diceImgName1 = dice1[diceRoll1];
     var diceImgName2 = dice2[diceRoll2];
-    document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
-    document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
-    document.getElementById("dice_button").disabled = true;
+    document.getElementById("dice-img-1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
+    document.getElementById("dice-img-2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
+    document.getElementById("dice-button").disabled = true;
     return [diceImgName1, diceImgName2];
 };
 
@@ -77,22 +83,21 @@ const stockGrowth = function(bank, user) {
 };
 
 function whichUser() {
-    user = document.getElementById("done_button");
+    let user = document.getElementById("done-button");
     if (user.classList.contains("user1")) {return 'user1'}
     else if (user.classList.contains("user2")) {return 'user2'}
 };
 
 function switchUser() {
-    user = document.getElementById("done_button");
-    turn = whichUser();
+    let user = document.getElementById("done-button");
+    let turn = whichUser();
     if (turn === 'user1') {user.classList.replace('user1', 'user2')}
     else if (turn === 'user2') {user.classList.replace('user2', 'user1')}
 };
 
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
-    user = whichUser();
-
+    let user = whichUser();
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
@@ -104,28 +109,28 @@ const startTurn =function(bank, user1, user2) {
 
 const winCheck = function(user1, user2){
    if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0 && user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-      document.getElementById("done_button").disabled = true;
-      document.getElementById("dice_button").disabled = true;
+      document.getElementById("done-button").disabled = true;
+      document.getElementById("dice-button").disabled = true;
       alert('Congratulations, it is a draw!')
     }
     else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0) {
-       document.getElementById("done_button").disabled = true;
-       document.getElementById("dice_button").disabled = true;
+       document.getElementById("done-button").disabled = true;
+       document.getElementById("dice-button").disabled = true;
        alert('Congratulations, User1 won!')
     }
    else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-       document.getElementById("done_button").disabled = true;
-       document.getElementById("dice_button").disabled = true;
+       document.getElementById("done-button").disabled = true;
+       document.getElementById("dice-button").disabled = true;
        alert('Congratulations, User2 won!')
     }
 };
 
 const endTurn = function(bank, user1, user2){
-    turn = whichUser();
+    let turn = whichUser();
     if (turn === 'user2') {winCheck(user1, user2)};
-    document.getElementById("done_button").disabled = true;
-    switchUser()
-    document.getElementById("dice_button").disabled = false;
+    document.getElementById("done-button").disabled = true;
+    switchUser();
+    document.getElementById("dice-button").disabled = false;
 };
 
 window.addEventListener('load', main);
