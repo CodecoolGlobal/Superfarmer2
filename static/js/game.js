@@ -11,6 +11,8 @@ const buttonEvents = function (bank, user1, user2) {
 };
 
 function showValues(bank, user1, user2){
+    console.log("showValues function user1 check:", user1);
+    console.log("showValues function user2 check:", user2);
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
     user1Sheep = document.getElementById("user1-sheep");
@@ -89,8 +91,8 @@ const stockInflux = function(diceResult, bank, user) {
 
 
 const stockGrowth = function(bank, user) {
-
-    for (animal in user) {
+    console.log("in stockGrowth function the received stock is:", user);
+    for (const animal of Object.keys(user)) {
     let offsprings = Math.floor(user[animal] / 2);
     if (offsprings <= bank.animal) {
         user[animal] = user[animal] + offsprings;
@@ -106,8 +108,10 @@ const stockGrowth = function(bank, user) {
 function whichUser() {
     user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
+        console.log("which user function says it is: user1")
         return 'user1';
     } else if (user.classList.contains("user2")){
+        console.log("which user function says it is: user2")
         return 'user2';
     }
 }
@@ -115,11 +119,15 @@ function whichUser() {
 function switchUser() {
     user = document.getElementById("done-button");
     let turn = whichUser();
+    let turn = whichUser();
+    console.log("in the beg of switchUser function the current user is", user);
     if (turn === 'user1'){
         user.classList.replace('user1', 'user2')
     } else if (turn === 'user2'){
         user.classList.replace('user2', 'user1')
     }
+    var newturn = whichUser();
+    console.log("in switchUser function, after switching is done", newturn)
 }
 
 const startTurn =function(bank, user1, user2) {
@@ -279,32 +287,32 @@ for (const marketAnimal of marketAnimals){
 function dragStart(){
     this.className += ' held';
     setTimeout(() => (this.className = 'own-animal-inactive'), 0);
-    console.log('start');
+
 }
 
 function dragEnd(){
     this.className = 'own-animal-inactive';
-    console.log('end');
+
 }
 
 function dragOver(e){
     e.preventDefault();
-    console.log('over');
+
 }
 
 function dragEnter(e){
     e.preventDefault();
     this.className += ' hovered';
-    console.log('enter');
+
 }
 
 function dragLeave(){
     this.className = 'market-animal';
-    console.log('leave');
+
 }
 
 function drop(){
     this.className += ' active';
-    console.log('drop');
+
 }
 
