@@ -1,5 +1,5 @@
-const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+const dice1 = ['fox', 'rabbit', 'fox', 'wolf', 'pig', 'fox', 'rabbit', 'fox', 'pig', 'sheep', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'fox', 'rabbit', 'fox', 'sheep', 'sheep'];
 
 
 const buttonEvents = function (bank, user1, user2) {
@@ -9,6 +9,10 @@ const buttonEvents = function (bank, user1, user2) {
     showValues(bank, user1, user2)
 
 };
+
+function inActivateUserAnimals() {
+
+}
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -42,7 +46,7 @@ function showValues(bank, user1, user2){
     user2RBigDog = document.getElementById("user2-big-dog");
     user2RBigDog.innerHTML=user2.big_dog;
     bankRabbitNr = document.getElementById("bank-rabbit-nr");
-    bankRabbitNr.textContent = bank.rabbit;
+    bankRabbitNr.innerHTML = bank.rabbit;
     bankSheepNr = document.getElementById("bank-sheep-nr");
     bankSheepNr.innerHTML = bank.sheep;
     bankPigNr = document.getElementById("bank-pig-nr");
@@ -76,6 +80,15 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
+        if (result === 'fox') {
+            user.rabbit = 0;
+        }
+        else if (result === 'wolf') {
+            user.rabbit = 0;
+            user.sheep = 0;
+            user.pig = 0;
+            user.cow = 0;
+        }
         for (let animal in user) {
             if (result === animal) {
                 user[animal]++;
@@ -108,10 +121,10 @@ const stockGrowth = function(bank, user) {
 function whichUser() {
     user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
-        console.log("which user function says it is: user1")
+        console.log("which user function says it is: user1");
         return 'user1';
     } else if (user.classList.contains("user2")){
-        console.log("which user function says it is: user2")
+        console.log("which user function says it is: user2");
         return 'user2';
     }
 }
