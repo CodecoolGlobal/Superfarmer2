@@ -7,11 +7,7 @@ const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", startTurn);
     document.getElementById("new-game-button").addEventListener("click", reload);
-    var user1Name = prompt('User 1:');
-    document.getElementById("user1-name").innerHTML=user1Name;
-    var user2Name = prompt('User 2:');
-    document.getElementById("user2-name").innerHTML=user2Name;
-    showValues()
+    //showValues()
 
 };
 
@@ -61,6 +57,10 @@ const main = function() {
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     showValues(bank, user1, user2);
+    //var user1Name = prompt('User 1:');
+    //document.getElementById("user1-name").innerHTML=user1Name;
+    //var user2Name = prompt('User 2:');
+    //document.getElementById("user2-name").innerHTML=user2Name;
     buttonEvents(bank, user1, user2);
 };
 
@@ -189,6 +189,8 @@ const endTurn = function(bank, user1, user2){
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
+    if (turn === 'user1') {alert('Next turn: User 2')}
+    else if (turn === 'user2') {alert('Next turn: User 1')};
     //document.getElementById("done-button").disabled = true;
     switchUser();
     //document.getElementById("dice-button").disabled = false;
