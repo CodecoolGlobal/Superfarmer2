@@ -6,7 +6,7 @@ const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
-    showValues(bank, user1, user2);
+    showValues(bank, user1, user2)
 
 };
 
@@ -74,19 +74,31 @@ function rollDice()  {
 };
 
 
-function stockInflux(bank, user) {
+const stockInflux = function(diceResult, bank, user) {
+    for (result of diceResult) {
+        for (let animal in user) {
+            if (result === animal) {
+                user[animal]++;
+            }
+        }
+        for (animal in bank) {
+            if (result === animal) {
+                bank[animal]--;
+            }
+        }
+    }
+};
 
-}
 
 const stockGrowth = function(bank, user) {
     console.log("in stockGrowth function the received stock is:", user);
     for (const animal of Object.keys(user)) {
-    offsprings = Math.floor(user[animal] / 2);
+    let offsprings = Math.floor(user[animal] / 2);
     if (offsprings <= bank.animal) {
         user[animal] = user[animal] + offsprings;
         bank.animal = bank.animal - offsprings;
     } else {
-        growth = bank.animal;
+        let growth = bank.animal;
         user[animal] = user[animal] + growth;
         bank.animal = 0;
     }
@@ -124,9 +136,13 @@ const startTurn =function(bank, user1, user2) {
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
+
     if (user==="user2") {
         stockInflux(diceResult, bank, user2);
         stockGrowth(bank, user2)}
+
+    showValues(bank, user1, user2);
+
     document.getElementById("done-button").disabled = false;
 };
 
