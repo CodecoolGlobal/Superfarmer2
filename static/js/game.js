@@ -57,10 +57,6 @@ const main = function() {
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     showValues(bank, user1, user2);
-    //var user1Name = prompt('User 1:');
-    //document.getElementById("user1-name").innerHTML=user1Name;
-    //var user2Name = prompt('User 2:');
-    //document.getElementById("user2-name").innerHTML=user2Name;
     buttonEvents(bank, user1, user2);
 };
 
@@ -72,7 +68,7 @@ function rollDice()  {
     var diceImgName2 = dice2[diceRoll2];
     document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
-    //document.getElementById("dice-button").disabled = true;
+    document.getElementById("dice-button").disabled = true;
     return [diceImgName1, diceImgName2];
 };
 
@@ -109,7 +105,7 @@ function whichUser() {
 
 function switchUser() {
     user = document.getElementById("done-button");
-    turn = whichUser();
+    var turn = whichUser();
     if (turn === 'user1'){
         user.classList.replace('user1', 'user2')
     } else if (turn === 'user2'){
@@ -119,14 +115,15 @@ function switchUser() {
 
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
-    let user = whichUser();
+    user = whichUser();
+
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
     if (user==="user2") {
         stockInflux(diceResult, bank, user2);
         stockGrowth(bank, user2)}
-    //document.getElementById("done-button").disabled = false;
+    document.getElementById("done-button").disabled = false;
 };
 
 const winCheck = function(user1, user2){
@@ -244,9 +241,7 @@ const endTurn = function(bank, user1, user2){
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
-    if (turn === 'user1') {alert('Next turn: User 2')}
-    else if (turn === 'user2') {alert('Next turn: User 1')};
-    //document.getElementById("done-button").disabled = true;
+    document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice-button").disabled = false;
 };
@@ -299,4 +294,3 @@ function drop(){
     this.className += ' active';
     console.log('drop');
 }
-
