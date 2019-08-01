@@ -55,6 +55,7 @@ const main = function() {
     var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
+    showValues(bank, user1,  user2);
     buttonEvents(bank, user1, user2);
 };
 
@@ -91,7 +92,7 @@ const stockGrowth = function(bank, user) {
 };
 
 function whichUser() {
-    user = document.getElementById("done_button");
+    user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
         return 'user1';
     } else if (user.classList.contains("user2")){
@@ -100,7 +101,7 @@ function whichUser() {
 }
 
 function switchUser() {
-    user = document.getElementById("done_button");
+    user = document.getElementById("done-button");
     turn = whichUser();
     if (turn === 'user1'){
         user.classList.replace('user1', 'user2')
@@ -124,66 +125,120 @@ const startTurn =function(bank, user1, user2) {
 
 const winCheck = function(user1, user2){
    if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0 && user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-      document.getElementById("done_button").disabled = true;
-      document.getElementById("dice_button").disabled = true;
+      document.getElementById("done-button").disabled = true;
+      document.getElementById("dice-button").disabled = true;
       alert('Congratulations, it is a draw!')
     }
     else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0) {
-       document.getElementById("done_button").disabled = true;
+       document.getElementById("done-button").disabled = true;
        document.getElementById("dice_button").disabled = true;
        alert('Congratulations, User1 won!')
     }
    else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
-       document.getElementById("done_button").disabled = true;
+       document.getElementById("done-button").disabled = true;
        document.getElementById("dice_button").disabled = true;
        alert('Congratulations, User2 won!')
     }
 };
 
 const endTurn = function(bank, user1, user2){
+    let turn = whichUser();
     if (document.getElementById("6-rabbits").className === "market-animal hovered active"){
         bank.rabbit += 6;
-        console.log("missing decrease user by 6");
+        if (turn === 'user1'){
+            user1.rabbit -= 6;
+        } else {
+            user2.rabbit -= 6;
+        }
     } else if (document.getElementById("1-sheep").className === "market-animal hovered active"){
         bank.sheep += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.sheep -= 1;
+        } else {
+            user2.sheep -= 1;
+        }
     } else if (document.getElementById("2-sheeps").className === "market-animal hovered active"){
         bank.sheep += 2;
-        console.log("missing decrease user by 2");
+        if (turn === 'user1'){
+            user1.sheep -= 2;
+        } else {
+            user2.sheep -= 2;
+        }
     } else if (document.getElementById("1-pig").className === "market-animal hovered active"){
         bank.pig += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.pig -= 1;
+        } else {
+            user2.pig -= 1;
+        }
     } else if (document.getElementById("3-pigs").className === "market-animal hovered active"){
         bank.pig += 3;
-        console.log("missing decrease user by 3");
+        if (turn === 'user1'){
+            user1.pig -= 3;
+        } else {
+            user2.pig -= 3;
+        }
     } else if (document.getElementById("1-cow").className === "market-animal hovered active"){
         bank.cow += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.cow -= 1;
+        } else {
+            user2.cow -= 1;
+        }
     } else if (document.getElementById("2-cows").className === "market-animal hovered active"){
         bank.cow += 2;
-        console.log("missing decrease user by 2");
+        if (turn === 'user1'){
+            user1.cow -= 2;
+        } else {
+            user2.cow -= 2;
+        }
     } else if (document.getElementById("1-horse").className === "market-animal hovered active"){
         bank.horse += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.horse -= 1;
+        } else {
+            user2.horse -= 1;
+        }
     } else if (document.getElementById("1-sheep-vs-dog").className === "market-animal hovered active"){
         bank.sheep += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.sheep -= 1;
+        } else {
+            user2.sheep -= 1;
+        }
     } else if (document.getElementById("1-small-dog").className === "market-animal hovered active"){
         bank.small_dog += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.small_dog -= 1;
+        } else {
+            user2.small_dog -= 1;
+        }
     } else if (document.getElementById("1-cow-vs-dog").className === "market-animal hovered active"){
         bank.cow += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.cow -= 1;
+        } else {
+            user2.cow -= 1;
+        }
     } else if (document.getElementById("1-big-dog").className === "market-animal hovered active"){
         bank.big_dog += 1;
-        console.log("missing decrease user by 1");
+        if (turn === 'user1'){
+            user1.big_dog -= 1;
+        } else {
+            user2.big_dog -= 1;
+        }
     }
+    const marketAnimals = document.querySelectorAll('.market-animal');
+    for (marketAnimal of marketAnimals){
+        marketAnimal.className = "market-animal";
+    }
+
     showValues(bank, user1,  user2);
     turn = whichUser();
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
-    document.getElementById("done_button").disabled = true;
+    document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice_button").disabled = false;
 };
