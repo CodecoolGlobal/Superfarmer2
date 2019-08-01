@@ -9,8 +9,7 @@ body {
 
 .num-text{
     color: coral;
-    font-size: 30px;
-    font: bold 30px Ubuntu;
+    font: bold 25px Ubuntu;
 }
 
 .card-text{
@@ -76,6 +75,11 @@ img {
 }
 
 .col-1{
+    color: coral;
+    font: bold 25px Ubuntu;
+}
+
+.col-2{
     color: coral;
     font: bold 30px Ubuntu;
 }

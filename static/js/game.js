@@ -1,5 +1,5 @@
-const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+const dice1 = ['fox', 'rabbit', 'fox', 'wolf', 'pig', 'fox', 'rabbit', 'fox', 'pig', 'sheep', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'fox', 'rabbit', 'fox', 'sheep', 'sheep'];
 
 
 const buttonEvents = function (bank, user1, user2) {
@@ -9,6 +9,10 @@ const buttonEvents = function (bank, user1, user2) {
     showValues(bank, user1, user2)
 
 };
+
+function inActivateUserAnimals() {
+
+}
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -42,7 +46,7 @@ function showValues(bank, user1, user2){
     user2RBigDog = document.getElementById("user2-big-dog");
     user2RBigDog.innerHTML=user2.big_dog;
     bankRabbitNr = document.getElementById("bank-rabbit-nr");
-    bankRabbitNr.textContent = bank.rabbit;
+    bankRabbitNr.innerHTML = bank.rabbit;
     bankSheepNr = document.getElementById("bank-sheep-nr");
     bankSheepNr.innerHTML = bank.sheep;
     bankPigNr = document.getElementById("bank-pig-nr");
@@ -76,6 +80,15 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
+        if (result === 'fox') {
+            user.rabbit = 0;
+        }
+        else if (result === 'wolf') {
+            user.rabbit = 0;
+            user.sheep = 0;
+            user.pig = 0;
+            user.cow = 0;
+        }
         for (let animal in user) {
             if (result === animal) {
                 user[animal]++;
@@ -111,10 +124,10 @@ const stockGrowth = function(bank, user) {
 function whichUser() {
     user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
-        console.log("which user function says it is: user1")
+        console.log("which user function says it is: user1");
         return 'user1';
     } else if (user.classList.contains("user2")){
-        console.log("which user function says it is: user2")
+        console.log("which user function says it is: user2");
         return 'user2';
     }
 }
@@ -171,87 +184,123 @@ const endTurn = function(bank, user1, user2){
     let turn = whichUser();
     if (document.getElementById("6-rabbits").className === "market-animal hovered active"){
         bank.rabbit += 6;
+        bank.sheep -= 1;
         if (turn === 'user1'){
             user1.rabbit -= 6;
+            user1.sheep += 1;
         } else {
             user2.rabbit -= 6;
+            user2.sheep += 1;
         }
     } else if (document.getElementById("1-sheep").className === "market-animal hovered active"){
         bank.sheep += 1;
+        bank.rabbit -= 6;
         if (turn === 'user1'){
             user1.sheep -= 1;
+            user1.rabbit += 6;
         } else {
             user2.sheep -= 1;
+            user2.rabbit += 6;
         }
     } else if (document.getElementById("2-sheeps").className === "market-animal hovered active"){
         bank.sheep += 2;
+        bank.pig -= 1;
         if (turn === 'user1'){
             user1.sheep -= 2;
+            user1.pig += 1;
         } else {
             user2.sheep -= 2;
+            user2.pig += 1;
         }
     } else if (document.getElementById("1-pig").className === "market-animal hovered active"){
         bank.pig += 1;
+        bank.sheep -= 2;
         if (turn === 'user1'){
             user1.pig -= 1;
+            user1.sheep += 2;
         } else {
             user2.pig -= 1;
+            user2.sheep += 2;
         }
     } else if (document.getElementById("3-pigs").className === "market-animal hovered active"){
         bank.pig += 3;
+        bank.cow -= 1;
         if (turn === 'user1'){
             user1.pig -= 3;
+            user1.cow += 1;
         } else {
             user2.pig -= 3;
+            user2.cow += 1;
         }
     } else if (document.getElementById("1-cow").className === "market-animal hovered active"){
         bank.cow += 1;
+        bank.pig -= 3;
         if (turn === 'user1'){
             user1.cow -= 1;
+            user1.pig += 3;
         } else {
             user2.cow -= 1;
+            user2.pig += 3;
         }
     } else if (document.getElementById("2-cows").className === "market-animal hovered active"){
         bank.cow += 2;
+        bank.horse -= 1;
         if (turn === 'user1'){
             user1.cow -= 2;
+            user1.horse += 1;
         } else {
             user2.cow -= 2;
+            user2.horse += 1;
         }
     } else if (document.getElementById("1-horse").className === "market-animal hovered active"){
         bank.horse += 1;
+        bank.cow -= 2;
         if (turn === 'user1'){
             user1.horse -= 1;
+            user1.cow += 2;
         } else {
             user2.horse -= 1;
+            user2.cow += 2;
         }
     } else if (document.getElementById("1-sheep-vs-dog").className === "market-animal hovered active"){
         bank.sheep += 1;
+        bank.small_dog -= 1;
         if (turn === 'user1'){
             user1.sheep -= 1;
+            user1.small_dog += 1;
         } else {
             user2.sheep -= 1;
+            user2.small_dog += 1;
         }
     } else if (document.getElementById("1-small-dog").className === "market-animal hovered active"){
         bank.small_dog += 1;
+        bank.sheep -= 1;
         if (turn === 'user1'){
             user1.small_dog -= 1;
+            user1.sheep += 1;
         } else {
             user2.small_dog -= 1;
+            user2.sheep += 1;
         }
     } else if (document.getElementById("1-cow-vs-dog").className === "market-animal hovered active"){
         bank.cow += 1;
+        bank.big_dog -= 1;
         if (turn === 'user1'){
             user1.cow -= 1;
+            user1.big_dog += 1;
         } else {
             user2.cow -= 1;
+            user2.big_dog += 1;
         }
     } else if (document.getElementById("1-big-dog").className === "market-animal hovered active"){
         bank.big_dog += 1;
+        bank.cow -= 1;
         if (turn === 'user1'){
             user1.big_dog -= 1;
+            user1.cow += 1;
         } else {
             user2.big_dog -= 1;
+            user1.cow += 1;
         }
     }
     const marketAnimals = document.querySelectorAll('.market-animal');
