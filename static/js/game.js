@@ -1,9 +1,9 @@
-const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
-
-
 //const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
 //const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+
+
+const dice1 = ['horse', 'horse', 'horse', 'horse', 'horse', 'horse', 'rabbit', 'rabbit', 'horse', 'horse', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
@@ -103,12 +103,22 @@ const stockInflux = function(diceResult, bank, user) {
         }
         for (let animal in user) {
             if (result === animal) {
-                user[animal]++;
+                if (bank[animal] === 0) {
+                    user[animal] = user[animal];
+                }
+                else {
+                    user[animal]++;
+                }
             }
         }
         for (animal in bank) {
             if (result === animal) {
-                bank[animal]--;
+                if (bank[animal] > 0) {
+                    bank[animal]--;
+                }
+            else {
+                bank[animal] = 0;
+                }
             }
         }
     }
