@@ -1,11 +1,11 @@
 const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
 const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
 
-
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
+    document.getElementById("new-game-button").addEventListener("click", function () {location.reload(true);});
     showValues(bank, user1, user2)
 
 };
@@ -42,7 +42,7 @@ function showValues(bank, user1, user2){
     user2RBigDog = document.getElementById("user2-big-dog");
     user2RBigDog.innerHTML=user2.big_dog;
     bankRabbitNr = document.getElementById("bank-rabbit-nr");
-    bankRabbitNr.textContent = bank.rabbit;
+    bankRabbitNr.innerHTML = bank.rabbit;
     bankSheepNr = document.getElementById("bank-sheep-nr");
     bankSheepNr.innerHTML = bank.sheep;
     bankPigNr = document.getElementById("bank-pig-nr");
@@ -59,6 +59,10 @@ const main = function() {
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     showValues(bank, user1, user2);
     buttonEvents(bank, user1, user2);
+    var user1Name = prompt('User 1:');
+    document.getElementById("user1-name").innerHTML = user1Name;
+    var user2Name = prompt('User 2:');
+    document.getElementById("user2-name").innerHTML = user2Name;
 };
 
 
@@ -124,9 +128,17 @@ function switchUser() {
     let turn = whichUser();
     console.log("in the beg of switchUser function the current user is", user);
     if (turn === 'user1'){
-        user.classList.replace('user1', 'user2')
+        user.classList.replace('user1', 'user2');
+        let activePlayer = document.getElementById("user1-field")
+        activePlayer.classList.remove("plays");
+        let nextPlayer = document.getElementById("user2-field");
+        nextPlayer.classList.add("plays");
     } else if (turn === 'user2'){
         user.classList.replace('user2', 'user1')
+        let activePlayer = document.getElementById("user2-field")
+        activePlayer.classList.remove("plays");
+        let nextPlayer = document.getElementById("user1-field");
+        nextPlayer.classList.add("plays");
     }
     var newturn = whichUser();
     console.log("in switchUser function, after switching is done", newturn)
