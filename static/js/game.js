@@ -2,6 +2,9 @@ const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', '
 const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
 
 
+//const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
+//const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
@@ -82,14 +85,21 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
-        if (result === 'fox') {
+        if (result === 'fox' && user.small_dog === 0) {
             user.rabbit = 0;
         }
-        else if (result === 'wolf') {
+        else if (result === 'fox' && user.small_dog > 0) {
+            user.small_dog = 0;
+        }
+        else if (result === 'wolf' && user.big_dog === 0) {
             user.rabbit = 0;
             user.sheep = 0;
             user.pig = 0;
             user.cow = 0;
+            user.small_dog = 0;
+        }
+        else if (result === 'wolf' && user.big_dog > 0) {
+            user.big_dog = 0;
         }
         for (let animal in user) {
             if (result === animal) {
