@@ -23,7 +23,12 @@
 </nav>
 <hr>
 
-<a class="link" href="{{ url_for('game') }}">Let's play!</a>
+
+    <br>
+
+<form action="{{ url_for('game') }}">
+    <input type="submit" class="btn btn-info" value="Let's play!" />
+</form>
 <img src="static/images/background.jpg" class="bg" alt="bg" align="center">
 
 </div>
