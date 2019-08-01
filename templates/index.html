@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Super Farmer</title>
+    <link rel="stylesheet" href="/static/css/index_style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js' defer></script>
+
 </head>
 <body>
+
+<div class="container">
+<img src="static/images/logo.png" class="logo" alt="logo" align="center">
+
+<br>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style='background-color: coral'>
+    <div class="container">
+        <h1>Welcome to Super Farmer!</h1>
+    </div>
+</nav>
+<hr>
+
+<a class="link" href="{{ url_for('game') }}">Let's play!</a>
+<img src="static/images/background.jpg" class="bg" alt="bg" align="center">
+
+</div>
 
 </body>
 </html>

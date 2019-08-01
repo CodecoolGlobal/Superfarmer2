@@ -5,7 +5,7 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
-    document.getElementById("dice_button").addEventListener("click", startTurn);
+    document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
     showValues()
 
 };
@@ -55,7 +55,7 @@ const main = function() {
     var bank = {'rabbit': 60, 'sheep': 14, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
-    showValues(bank, user1,  user2);
+    showValues(bank, user1, user2);
     buttonEvents(bank, user1, user2);
 };
 
@@ -67,7 +67,7 @@ function rollDice()  {
     var diceImgName2 = dice2[diceRoll2];
     document.getElementById("dice_img_1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
     document.getElementById("dice_img_2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
-    document.getElementById("dice_button").disabled = true;
+    document.getElementById("dice-button").disabled = true;
     return [diceImgName1, diceImgName2];
 };
 
@@ -131,12 +131,12 @@ const winCheck = function(user1, user2){
     }
     else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit>0) {
        document.getElementById("done-button").disabled = true;
-       document.getElementById("dice_button").disabled = true;
+       document.getElementById("dice-button").disabled = true;
        alert('Congratulations, User1 won!')
     }
    else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit>0) {
        document.getElementById("done-button").disabled = true;
-       document.getElementById("dice_button").disabled = true;
+       document.getElementById("dice-button").disabled = true;
        alert('Congratulations, User2 won!')
     }
 };
@@ -240,7 +240,7 @@ const endTurn = function(bank, user1, user2){
     }
     document.getElementById("done-button").disabled = true;
     switchUser();
-    document.getElementById("dice_button").disabled = false;
+    document.getElementById("dice-button").disabled = false;
 };
 
 window.addEventListener('load', main);
