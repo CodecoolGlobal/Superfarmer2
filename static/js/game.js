@@ -6,9 +6,10 @@ const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
     document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", function () {startTurn(bank, user1, user2);});
-    showValues(bank, user1, user2)
+    showValues(bank, user1, user2);
 
 };
+
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -51,14 +52,17 @@ function showValues(bank, user1, user2){
     bankCowNr.innerHTML = bank.cow;
     bankHorseNr = document.getElementById("bank-horse-nr");
     bankHorseNr.innerHTML = bank.horse;
+
 }
 
 const main = function() {
     var bank = {'rabbit': 60, 'sheep': 24, 'pig': 20, 'cow': 12, 'horse': 6, 'small_dog': 4, 'big_dog': 2};
     var user1 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
     var user2 = {'rabbit': 0, 'sheep': 0, 'pig': 0, 'cow': 0, 'horse': 0, 'small_dog': 0, 'big_dog': 0};
+    inactivateUserAnimals(user1);
     showValues(bank, user1, user2);
     buttonEvents(bank, user1, user2);
+
 };
 
 
@@ -295,6 +299,7 @@ const endTurn = function(bank, user1, user2){
         marketAnimal.className = "market-animal";
     }
 
+
     showValues(bank, user1,  user2);
 
     if (turn === 'user2') {
@@ -329,7 +334,7 @@ function dragStart(){
 }
 
 function dragEnd(){
-    this.className = 'own-animal-inactive';
+    this.className = 'own-animal';
 
 }
 
@@ -353,4 +358,3 @@ function drop(){
     this.className += ' active';
 
 }
-
