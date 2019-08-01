@@ -83,3 +83,7 @@ img {
     color: coral;
     font: bold 30px Ubuntu;
 }
+
+.hiddendice {
+    visibility: hidden;
+}

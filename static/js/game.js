@@ -160,6 +160,8 @@ const startTurn =function(bank, user1, user2) {
     showValues(bank, user1, user2);
 
     document.getElementById("done-button").disabled = false;
+    document.getElementById("dice_img_1").classList.remove("hiddendice");
+    document.getElementById("dice_img_2").classList.remove("hiddendice");
 };
 
 const winCheck = function(user1, user2){
@@ -316,6 +318,8 @@ const endTurn = function(bank, user1, user2){
     document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice-button").disabled = false;
+    document.getElementById("dice_img_1").classList.add("hiddendice")
+    document.getElementById("dice_img_2").classList.add("hiddendice")
 };
 
 window.addEventListener('load', main);
