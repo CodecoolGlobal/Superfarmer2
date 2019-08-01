@@ -4,8 +4,7 @@ const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rab
 function reload() {window.location.reload(true)};
 
 const buttonEvents = function (bank, user1, user2) {
-    document.getElementById("done-button").disabled = true;
-    document.getElementById("done-button").addEventListener("click", endTurn);
+    document.getElementById("done-button").addEventListener("click", function () {endTurn(bank, user1, user2);});
     document.getElementById("dice-button").addEventListener("click", startTurn);
     document.getElementById("new-game-button").addEventListener("click", reload);
     var user1Name = prompt('User 1:');
@@ -72,7 +71,7 @@ function rollDice()  {
     var diceImgName2 = dice2[diceRoll2];
     document.getElementById("dice-img-1").innerHTML = `<img src='/static/images/${diceImgName1}.png' width="100px">`;
     document.getElementById("dice-img-2").innerHTML = `<img src='/static/images/${diceImgName2}.png' width="100px">`;
-    document.getElementById("dice-button").disabled = true;
+    //document.getElementById("dice-button").disabled = true;
     return [diceImgName1, diceImgName2];
 };
 
@@ -97,7 +96,7 @@ const stockGrowth = function(bank, user) {
 };
 
 function whichUser() {
-    user = document.getElementById("done_button");
+    user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
         return 'user1';
     } else if (user.classList.contains("user2")){
@@ -106,7 +105,7 @@ function whichUser() {
 }
 
 function switchUser() {
-    user = document.getElementById("done_button");
+    user = document.getElementById("done-button");
     turn = whichUser();
     if (turn === 'user1'){
         user.classList.replace('user1', 'user2')
@@ -116,6 +115,7 @@ function switchUser() {
 }
 
 const startTurn =function(bank, user1, user2) {
+    document.getElementById("dice_button")
     let diceResult = rollDice();
     let user = whichUser();
     if (user==="user1") {
@@ -124,7 +124,7 @@ const startTurn =function(bank, user1, user2) {
     if (user==="user2") {
         stockInflux(diceResult, bank, user2);
         stockGrowth(bank, user2)}
-    document.getElementById("done-button").disabled = false;
+    //document.getElementById("done-button").disabled = false;
 };
 
 const winCheck = function(user1, user2){
@@ -146,11 +146,6 @@ const winCheck = function(user1, user2){
 };
 
 const endTurn = function(bank, user1, user2){
-    let turn = whichUser();
-    if (turn === 'user2') {winCheck(user1, user2)};
-    document.getElementById("done-button").disabled = true;
-    switchUser();
-    document.getElementById("dice-button").disabled = false;
     if (document.getElementById("6-rabbits").className === "market-animal hovered active"){
         bank.rabbit += 6;
         console.log("missing decrease user by 6");
@@ -193,9 +188,9 @@ const endTurn = function(bank, user1, user2){
     if (turn === 'user2') {
         winCheck(user1, user2)
     }
-    document.getElementById("done_button").disabled = true;
+    //document.getElementById("done-button").disabled = true;
     switchUser();
-    document.getElementById("dice_button").disabled = false;
+    //document.getElementById("dice-button").disabled = false;
 };
 
 window.addEventListener('load', main);
