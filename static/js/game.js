@@ -1,5 +1,5 @@
-const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
-const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+const dice1 = ['fox', 'rabbit', 'fox', 'wolf', 'pig', 'fox', 'rabbit', 'fox', 'pig', 'sheep', 'sheep', 'horse'];
+const dice2 = ['cow', 'pig', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'fox', 'rabbit', 'fox', 'sheep', 'sheep'];
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
@@ -9,6 +9,10 @@ const buttonEvents = function (bank, user1, user2) {
     showValues(bank, user1, user2)
 
 };
+
+function inActivateUserAnimals() {
+
+}
 
 function showValues(bank, user1, user2){
     console.log("showValues function user1 check:", user1);
@@ -80,6 +84,15 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
+        if (result === 'fox') {
+            user.rabbit = 0;
+        }
+        else if (result === 'wolf') {
+            user.rabbit = 0;
+            user.sheep = 0;
+            user.pig = 0;
+            user.cow = 0;
+        }
         for (let animal in user) {
             if (result === animal) {
                 user[animal]++;
@@ -115,10 +128,10 @@ const stockGrowth = function(bank, user) {
 function whichUser() {
     user = document.getElementById("done-button");
     if (user.classList.contains("user1")){
-        console.log("which user function says it is: user1")
+        console.log("which user function says it is: user1");
         return 'user1';
     } else if (user.classList.contains("user2")){
-        console.log("which user function says it is: user2")
+        console.log("which user function says it is: user2");
         return 'user2';
     }
 }
@@ -147,7 +160,7 @@ function switchUser() {
 const startTurn =function(bank, user1, user2) {
     let diceResult = rollDice();
     user = whichUser();
-    console.log("in startTurn function user without let or var gives", user)
+    console.log("in beginning of startTurn function user1", user1)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
         stockGrowth(bank, user1)}
@@ -159,6 +172,8 @@ const startTurn =function(bank, user1, user2) {
     showValues(bank, user1, user2);
 
     document.getElementById("done-button").disabled = false;
+    document.getElementById("dice_img_1").classList.remove("hiddendice");
+    document.getElementById("dice_img_2").classList.remove("hiddendice");
 };
 
 const winCheck = function(user1, user2){
@@ -315,6 +330,8 @@ const endTurn = function(bank, user1, user2){
     document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice-button").disabled = false;
+    document.getElementById("dice_img_1").classList.add("hiddendice")
+    document.getElementById("dice_img_2").classList.add("hiddendice")
 };
 
 window.addEventListener('load', main);
