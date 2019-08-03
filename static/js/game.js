@@ -1,6 +1,6 @@
-
 const dice1 = ['rabbit', 'rabbit', 'rabbit', 'rabbit', 'pig', 'fox', 'rabbit', 'rabbit', 'pig', 'sheep', 'sheep', 'horse'];
 const dice2 = ['cow', 'pig', 'sheep', 'rabbit', 'rabbit', 'rabbit', 'wolf', 'rabbit', 'rabbit', 'rabbit', 'sheep', 'sheep'];
+
 
 const buttonEvents = function (bank, user1, user2) {
     document.getElementById("done-button").disabled = false;
@@ -18,7 +18,7 @@ function showValues(bank, user1, user2){
     user1Rabbit = document.getElementById("user1-rabbit");
     user1Rabbit.innerHTML=user1.rabbit;
     user1Sheep = document.getElementById("user1-sheep");
-    user1Sheep.innerHTML=user1.sheep;
+    user1Sheep .innerHTML=user1.sheep;
     user1Pig = document.getElementById("user1-pig");
     user1Pig.innerHTML=user1.pig;
     user1Cow = document.getElementById("user1-cow");
@@ -82,40 +82,23 @@ function rollDice()  {
 
 const stockInflux = function(diceResult, bank, user) {
     for (result of diceResult) {
-        if (result === 'fox' && user.small_dog === 0) {
+        if (result === 'fox') {
             user.rabbit = 0;
         }
-        else if (result === 'fox' && user.small_dog > 0) {
-            user.small_dog = 0;
-        }
-        else if (result === 'wolf' && user.big_dog === 0) {
+        else if (result === 'wolf') {
             user.rabbit = 0;
             user.sheep = 0;
             user.pig = 0;
             user.cow = 0;
-            user.small_dog = 0;
-        }
-        else if (result === 'wolf' && user.big_dog > 0) {
-            user.big_dog = 0;
         }
         for (let animal in user) {
             if (result === animal) {
-                if (bank[animal] === 0) {
-                    user[animal] = user[animal];
-                }
-                else {
-                    user[animal]++;
-                }
+                user[animal]++;
             }
         }
         for (animal in bank) {
             if (result === animal) {
-                if (bank[animal] > 0) {
-                    bank[animal]--;
-                }
-            else {
-                bank[animal] = 0;
-                }
+                bank[animal]--;
             }
         }
     }
@@ -124,25 +107,20 @@ const stockInflux = function(diceResult, bank, user) {
 
 const stockGrowth = function(bank, user) {
     console.log("in stockGrowth function the received stock is:", user);
-    for (var animal of Object.keys(user)) {
+    for (const animal of Object.keys(user)) {
         let offsprings = Math.floor(user[animal] / 2);
-        console.log("in the loop in stockGrowth the bank is:", animal, bank[animal]);
-        console.log("offsprings of ",animal, offsprings);
-        user[animal] +=  offsprings;
-        bank[animal] -= offsprings;
-        // if (offsprings <= bank.animal) {
-        //     user[animal] +=  offsprings;
-        //     bank.animal = bank.animal - offsprings;
-        // console.log("stock in conditional, increased?", animal, user[animal])
-        // } else {
-        //     growth = bank.animal;
-        //     user[animal] = user[animal] + growth;
-        // console.log("stock in conditional, increased?", animal, user[animal])
-        //     bank.animal = 0;
-        // }
+        console.log("in the loop in stockGrowtch", animal, user[animal]);
+        if (offsprings <= bank.animal) {
+            user[animal] = user[animal] + offsprings;
+            bank.animal = bank.animal - offsprings;
+        } else {
+            growth = bank.animal;
+            user[animal] = user[animal] + growth;
+            console.log(animal, user[animal]);
+            bank.animal = 0;
+        }
     }
-        console.log("at the end of the StockGrowth the bank is :", bank);
-    return [bank, user];
+        console.log("at the end of the StockGrowth", user)
 };
 
 function whichUser() {
@@ -183,12 +161,11 @@ const startTurn =function(bank, user1, user2) {
     console.log("in beginning of startTurn function user1", user1)
     if (user==="user1") {
         stockInflux(diceResult, bank, user1);
-        [bank, user1]=stockGrowth(bank, user1)};
+        stockGrowth(bank, user1)}
 
     if (user==="user2") {
         stockInflux(diceResult, bank, user2);
-        [bank, user2]=stockGrowth(bank, user2);
-        }
+        stockGrowth(bank, user2)}
 
     showValues(bank, user1, user2);
 
