@@ -193,6 +193,8 @@ const startTurn = function (bank, user1, user2) {
 };
 
 const winCheck = function (user1, user2) {
+    let user1Name = document.getElementById("user1-name").textContent;
+    let user2Name = document.getElementById("user2-name").textContent;
     if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit > 0 && user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit > 0) {
         document.getElementById("done-button").disabled = true;
         document.getElementById("dice-button").disabled = true;
@@ -200,11 +202,11 @@ const winCheck = function (user1, user2) {
     } else if (user1.sheep > 0 && user1.horse > 0 && user1.cow > 0 && user1.pig > 0 && user1.rabbit > 0) {
         document.getElementById("done-button").disabled = true;
         document.getElementById("dice-button").disabled = true;
-        alert('Congratulations, User1 won!')
+        alert('Congratulations, ' + user1Name + ' won!')
     } else if (user2.sheep > 0 && user2.horse > 0 && user2.cow > 0 && user2.pig > 0 && user2.rabbit > 0) {
         document.getElementById("done-button").disabled = true;
         document.getElementById("dice-button").disabled = true;
-        alert('Congratulations, User2 won!')
+        alert('Congratulations, ' + user2Name + ' won!')
     }
 };
 
