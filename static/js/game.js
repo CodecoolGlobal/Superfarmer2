@@ -110,14 +110,14 @@ const stockGrowth = function(bank, user) {
     for (const animal of Object.keys(user)) {
         let offsprings = Math.floor(user[animal] / 2);
         console.log("in the loop in stockGrowtch", animal, user[animal]);
-        if (offsprings <= bank.animal) {
+        if (offsprings <= bank[animal]) {
             user[animal] = user[animal] + offsprings;
-            bank.animal = bank.animal - offsprings;
+            bank[animal] = bank[animal] - offsprings;
         } else {
-            growth = bank.animal;
+            growth = bank[animal];
             user[animal] = user[animal] + growth;
             console.log(animal, user[animal]);
-            bank.animal = 0;
+            bank[animal] = 0;
         }
     }
         console.log("at the end of the StockGrowth", user)
