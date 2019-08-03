@@ -207,6 +207,7 @@ const winCheck = function (user1, user2) {
         document.getElementById("done-button").disabled = true;
         document.getElementById("dice-button").disabled = true;
         alert('Congratulations, ' + user2Name + ' won!')
+
     }
 };
 
@@ -340,14 +341,14 @@ const endTurn = function (bank, user1, user2) {
 
     showValues(bank, user1, user2);
 
-    if (turn === 'user2') {
-        winCheck(user1, user2)
-    }
     document.getElementById("done-button").disabled = true;
     switchUser();
     document.getElementById("dice-button").disabled = false;
-    document.getElementById("dice_img_1").classList.add("hiddendice")
-    document.getElementById("dice_img_2").classList.add("hiddendice")
+    document.getElementById("dice_img_1").classList.add("hiddendice");
+    document.getElementById("dice_img_2").classList.add("hiddendice");
+    if (turn === 'user2') {
+        winCheck(user1, user2)
+    }
 };
 
 window.addEventListener('load', main);
