@@ -233,7 +233,7 @@ const endTurn = function (bank, user1, user2) {
             user2.sheep -= 1;
             user2.rabbit += 6;
         }
-    } else if (document.getElementById("2-sheeps").className === "market-animal hovered active") {
+    } if (document.getElementById("2-sheeps").className === "market-animal hovered active") {
         bank.sheep += 2;
         bank.pig -= 1;
         if (turn === 'user1') {
@@ -253,7 +253,7 @@ const endTurn = function (bank, user1, user2) {
             user2.pig -= 1;
             user2.sheep += 2;
         }
-    } else if (document.getElementById("3-pigs").className === "market-animal hovered active") {
+    } if (document.getElementById("3-pigs").className === "market-animal hovered active") {
         bank.pig += 3;
         bank.cow -= 1;
         if (turn === 'user1') {
@@ -273,7 +273,7 @@ const endTurn = function (bank, user1, user2) {
             user2.cow -= 1;
             user2.pig += 3;
         }
-    } else if (document.getElementById("2-cows").className === "market-animal hovered active") {
+    } if (document.getElementById("2-cows").className === "market-animal hovered active") {
         bank.cow += 2;
         bank.horse -= 1;
         if (turn === 'user1') {
@@ -293,7 +293,7 @@ const endTurn = function (bank, user1, user2) {
             user2.horse -= 1;
             user2.cow += 2;
         }
-    } else if (document.getElementById("1-sheep-vs-dog").className === "market-animal hovered active") {
+    } if (document.getElementById("1-sheep-vs-dog").className === "market-animal hovered active") {
         bank.sheep += 1;
         bank.small_dog -= 1;
         if (turn === 'user1') {
@@ -313,7 +313,7 @@ const endTurn = function (bank, user1, user2) {
             user2.small_dog -= 1;
             user2.sheep += 1;
         }
-    } else if (document.getElementById("1-cow-vs-dog").className === "market-animal hovered active") {
+    } if (document.getElementById("1-cow-vs-dog").className === "market-animal hovered active") {
         bank.cow += 1;
         bank.big_dog -= 1;
         if (turn === 'user1') {
