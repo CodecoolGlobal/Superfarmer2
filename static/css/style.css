@@ -84,10 +84,24 @@ img {
     font: bold 30px Ubuntu;
 }
 
+#user-field {
+    padding: 10px
+}
+
 .plays{
     background-color: lightgrey;
+    border-radius: 10px;
 }
 
 .hiddendice {
     visibility: hidden;
+}
+
+nav h1 {
+    color: lightyellow;
+    text-align: left;
+}
+
+.navbar-light {
+background-color: #35727d;
 }

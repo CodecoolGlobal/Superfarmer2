@@ -14,9 +14,16 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style='background-color: salmon'>
-    <div class="container">
-            <h1>Super Farmer</h1>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container-fluid">
+    <logo class="navbar-brand" >
+            <img src="/static/images/farmer.png" alt="">
+
+        </logo>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="navbar-left">
+            <h1 >Super Farmer</h1></li></ul></div>
             <button id="new-game-button" type="button" class="btn btn-info">New game</button>
     </div>
 </nav>
@@ -150,6 +157,7 @@
     <br>
     <div class="container-fluid">
     <user-field>
+    <div id="user-field">
         <div class="row padding" align="center">
             <div id="user1-field" class="col-lg-4 col-md-6 col-sm-12 plays">
                 <h1 id="user1-name">User 1</h1>
@@ -182,8 +190,8 @@
 
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="row">
-                    <div id="dice_img_1" class="col-6">Not rolled yet</div>
-                    <div id="dice_img_2" class="col-6">Not rolled yet</div>
+                    <div id="dice_img_1" class="col-6"> </div>
+                    <div id="dice_img_2" class="col-6"> </div>
                 </div>
                 <div class="row" align="center">
                     <div class="col-1"></div>
@@ -223,6 +231,7 @@
                 </div>
             </div>
 
+        </div>
         </div>
     </user-field>
     </div>
